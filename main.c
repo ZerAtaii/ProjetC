@@ -2,9 +2,9 @@
 #include <stdlib.h>
 #include "bankaccount.c"
 
-int main()
-{
+int main() {
     Account myfirstaccount;
-    initialize(myfirstaccount);
-    printf("Votre solde est de %d",myfirstaccount.amount);
+    //setAmount(myfirstaccount,500.0);
+    printf("Votre solde est de %f\n", getAmount(myfirstaccount));
+    return 0;
 }
