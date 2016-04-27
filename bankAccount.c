@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <String.h>
+#include <string.h>
 #include "bankAccount.h"
 
 void initialize(bankAccount *acc) {
@@ -19,35 +19,37 @@ void getInfo(bankAccount *acc) {
 	printf("Name: %s %s \nAmount: %f \n",acc->lastName,acc->firstName,acc->amount);
 }
 
-void addMovements(bankAccount *acc,movements *m) { 
-
-	(acc->motions)[acc->size]=m;
+void addMovements(bankAccount *acc,movements* m) {
+	(acc->motions)[acc->size]=*m;
 	(acc->size)++;
+	
 }
 void getMovements(bankAccount *acc) { 
-	int i;
-	for (i=0;i<(acc->size);i++) { 
-		getInfoMovements(&(acc->motions)[i]);
+	int i=0;
+	printf("Liste des mouvements: \n");
+	for (i=0;i<(acc->size);i++) {
+		getInfoMovements((acc->motions)[i]);	
 	}
 }
 
-void getInfoMovements(movements *m) { 
-	printf("Amount: %f from/to %s  ",m->amountSpent,m->whereSpent);
-	if ((m->amountSpent)>=0) { 
+void getInfoMovements(movements m) { 
+	printf("Amount: %f from/to %s  ",m.amountSpent,m.whereSpent);
+	if ((m.amountSpent)>=0) { 
 		printf("Type: ");
-		printEarning(m->typeE);	
+		printEarning(m.typeE);	
 	}
 	else { 
 		printf("Type: ");
-		printSpending(m->typeS);
+		printSpending(m.typeS);
 	}
-	printf("\n");
+	printf(" at %s \n",m.date);
 }
-void setInfoMovements(movements *m,double value,char *c,spendingType s,earningType e) { 
+void setInfoMovements(movements *m,double value,char *c,spendingType s,earningType e,char *d) { 
 	m->amountSpent=value;
 	m->whereSpent=c;
 	m->typeS=s;
 	m->typeE=e;
+	m->date=d;
 }
 
 void printEarning(earningType e) { 
