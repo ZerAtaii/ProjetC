@@ -28,7 +28,7 @@ struct bankAccount {
 typedef struct bankAccount bankAccount;
 
 
-void initialize(bankAccount *acc);
+void initialize(bankAccount acc);
 void setName(bankAccount *acc,char *last,char *first);
 void changeAmount(bankAccount *acc,double value);
 void getInfo(bankAccount *acc);

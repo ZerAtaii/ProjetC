@@ -4,14 +4,14 @@
 #include "bankAccount.h"
 
 
-double* getTotalSpendingType(bankAccount acc) {
+double *getTotalSpendingType(bankAccount acc) {
 	
 	double *spendings = malloc(7*sizeof(double));
 	int i;
 	for (i = 0; i<acc.size; i++) {
 		if (acc.motions[i].amountSpent<0) {
 			switch(acc.motions[i].typeS) {
-				case(DWELLING): spendings[0] = spendings[0] + acc.motions[i].amountSpent; return;
+				case(DWELLING): spendings[0] = spendings[0] + acc.motions[i].amountSpent; break;
 				case(ENTERTAINEMENT): spendings[1] = spendings[1] + acc.motions[i].amountSpent; break;
 				case(GROCERIES): spendings[2] = spendings[2] + acc.motions[i].amountSpent; break;
 				case(FINANCE): spendings[3] = spendings[3] + acc.motions[i].amountSpent; break;
@@ -24,7 +24,7 @@ double* getTotalSpendingType(bankAccount acc) {
 	return spendings;
 }
 
-double* getTotalEarningType(bankAccount acc) {
+double *getTotalEarningType(bankAccount acc) {
 
 	double *earnings = malloc(5*sizeof(double));
 	int i;
@@ -49,15 +49,16 @@ double getTotalSpendings(bankAccount acc) {
 	for (i=0; i<7; i++) {
 		totalSpendings = totalSpendings + getTotalSpendingType(acc)[i];
 	}
+	return totalSpendings;
 }
 
 
-double* getStatsSpendings(bankAccount acc) {
+double *getStatsSpendings(bankAccount acc) {
 	
 	double *percentagesSpendings = malloc(7*sizeof(double));
 	int i;
-	for (i; i<7; i++) {
-		percentagesSpendings[i] = getTotalSpendingType(acc)[i]/getTotalSpendings(acc);
+	for (i=0; i<7; i++) {
+		percentagesSpendings[i] = 100*(getTotalSpendingType(acc)[i]/getTotalSpendings(acc));
 	}
 	return percentagesSpendings;
 	

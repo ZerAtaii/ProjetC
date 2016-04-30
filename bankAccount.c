@@ -3,8 +3,10 @@
 #include <string.h>
 #include "bankAccount.h"
 
-void initialize(bankAccount *acc) {
-	acc->size=0;
+void initialize(bankAccount acc) {
+	acc.size=0;
+	//acc.amount=0;
+	
 }
 void setName(bankAccount *acc,char *last,char *first) {
 	acc->lastName=last;
@@ -59,6 +61,7 @@ void printEarning(earningType e) {
 		case(2):printf("REFUND"); break;
 		case(3):printf("ALLOWANCE"); break;
 		case(4):printf("OTHER"); break;
+		case(10):printf("NONE");break;
 	}
 }
 void printSpending(spendingType s) { 
@@ -70,6 +73,7 @@ void printSpending(spendingType s) {
 		case(4):printf("TRANSPORT"); break;
 		case(5):printf("COMMUNICATION"); break;
 		case(6):printf("OTHER"); break;
+		case(10):printf("NONES"); break;
 	}
 }
 
