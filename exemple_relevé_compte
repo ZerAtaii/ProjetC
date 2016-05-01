@@ -1,9 +1,8 @@
-BANQUE POSTALE
-
-M.Dupont Thierry				Solde: 10000€
+Nom Prénom <-Espace apres le prénom				
+Solde:10000 €
 dépenses:
 	
-Date			Montant			Débiteur/Créditeur
+Date	              	Montant			Débiteur/Créditeur
 
 11/02/2016		-50€ 			Ikea
 
