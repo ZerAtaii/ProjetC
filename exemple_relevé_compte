@@ -1,11 +1,7 @@
 Nom Prénom <-Espace apres le prénom				
 Solde:10000 €
-dépenses:
+Nombre de transfert:int <- Espace
 	
 Date	              	Montant			Débiteur/Créditeur
 
-11/02/2016		-50€ 			Ikea
-
-14/03/2016		-80€			Leader price
-
-25/04/2016		+25€			M.Coco
+:jj/mm/aaaa:		:double € 			:String <-Espace
