@@ -46,39 +46,50 @@ void readF(bankAccount *acc,char* fichierR) {
 			strcat(n,c);
 		}
 		int nombre=atoi(n);
-		fseek(fichier,70, SEEK_CUR);
+		movements *tab;
+		tab=malloc(nombre*sizeof(movements));
 		int compteur=0;
-		//for (compteur=0;compteur<nombre;compteur++) {
+		for (compteur=0;compteur<nombre;compteur++) {
 			movements m;
 			char *date=malloc(15);
-			char *whereSpent=malloc(100);
+			char *whereSpent=malloc(50);
 			char *amountSpent=malloc(20);
+			while(c[0] != 0x3a) {
+				fgets(c,2,fichier);
+			}
+			strcat(date,fgets(c,2,fichier));
+			while(c[0] != 0x3a) {
+				fgets(c,2,fichier);
+				if (c[0]!=0x3a) {
+					strcat(date,c); }
+				 
+			}
+			fgets(c,2,fichier);
+			while(c[0] != 0x3a) {
+				fgets(c,2,fichier);
+			}
 			while(c[0] != 0x20) {
 				fgets(c,2,fichier);
-				strcat(date,c);
+				if (c[0]!=0x3a) {
+					strcat(amountSpent,c); }
 			}
-			while(c[0] == 0x20) {
+			fgets(c,2,fichier);
+			fgets(c,2,fichier);
+			while(c[0] != 0x3a) {
 				fgets(c,2,fichier);
 			}
-			strcat(amountSpent,c);
-			while(c[0] != 0x20) {
-				fgets(c,2,fichier);
-				strcat(amountSpent,c);
-			}
-			while(c[0] == 0x20) {
-				fgets(c,2,fichier);
-			}
-			strcat(whereSpent,c);
 			while(c[0] != 0x20) {
 				fgets(c,2,fichier);
 				strcat(whereSpent,c);
 			}
-			printf("%s %s %s \n",date,amountSpent,whereSpent);
-			setInfoMovements(&m,atoi(amountSpent),whereSpent,10,10,date);
-			addMovements(acc,&m);
+			setInfoMovements(&(tab[compteur]),atof(amountSpent),whereSpent,10,10,date);
 			
-	//	}
-
+		}
+		int compteur1=0;
+		for (compteur1=0;compteur1<nombre;compteur1++) {
+			addMovements(acc,&(tab[compteur1]));
+		}
+		
 
         	fclose(fichier); 
     	}

@@ -6,7 +6,7 @@
 
 double *getTotalSpendingType(bankAccount acc) {
 	
-	double *spendings = malloc(7*sizeof(double));
+	double *spendings = malloc(8*sizeof(double));
 	int i;
 	for (i = 0; i<acc.size; i++) {
 		if (acc.motions[i].amountSpent<0) {
@@ -18,6 +18,7 @@ double *getTotalSpendingType(bankAccount acc) {
 				case(TRANSPORT): spendings[4] = spendings[4] + acc.motions[i].amountSpent; break;
 				case(COMMUNICATION): spendings[5] = spendings[5] + acc.motions[i].amountSpent; break;
 				case(OTHERSPENDING): spendings[6] = spendings[6] + acc.motions[i].amountSpent; break;
+				case(10): spendings[7] = spendings[7] + acc.motions[i].amountSpent; break;
 			}
 		}
 	}
@@ -26,7 +27,7 @@ double *getTotalSpendingType(bankAccount acc) {
 
 double *getTotalEarningType(bankAccount acc) {
 
-	double *earnings = malloc(5*sizeof(double));
+	double *earnings = malloc(6*sizeof(double));
 	int i;
 	for (i = 0; i<acc.size; i++) {
 		if (acc.motions[i].amountSpent>0) {
@@ -36,6 +37,7 @@ double *getTotalEarningType(bankAccount acc) {
 				case(REFUND): earnings[2] = earnings[2] + acc.motions[i].amountSpent; break;
 				case(ALLOWANCE): earnings[3] = earnings[3] + acc.motions[i].amountSpent; break;
 				case(OTHEREARNING): earnings[4] = earnings[4] + acc.motions[i].amountSpent; break;
+				case(10): earnings[5] = earnings[5] + acc.motions[i].amountSpent; break;
 			}
 		}
 	}
@@ -46,7 +48,7 @@ double *getTotalEarningType(bankAccount acc) {
 double getTotalSpendings(bankAccount acc) {
 	double totalSpendings = 0.0;
 	int i;
-	for (i=0; i<7; i++) {
+	for (i=0; i<8; i++) {
 		totalSpendings = totalSpendings + getTotalSpendingType(acc)[i];
 	}
 	return totalSpendings;
@@ -55,9 +57,9 @@ double getTotalSpendings(bankAccount acc) {
 
 double *getStatsSpendings(bankAccount acc) {
 	
-	double *percentagesSpendings = malloc(7*sizeof(double));
+	double *percentagesSpendings = malloc(8*sizeof(double));
 	int i;
-	for (i=0; i<7; i++) {
+	for (i=0; i<8; i++) {
 		percentagesSpendings[i] = 100*(getTotalSpendingType(acc)[i]/getTotalSpendings(acc));
 	}
 	return percentagesSpendings;
