@@ -1,11 +1,11 @@
 Dupont Thierry 			
-Solde:10000.0 €
-Nombre de transfert:3
+Solde:79055.52 €
+Nombre de transfert:3 
 
-Date			Montant			Débiteur/Créditeur
+Date			Montant			Débiteur
 
-11/02/2016		-50 € 			Ikea 
+:11/02/2016:		:-50 € 			:Ikea 
 
-14/03/2016		-80 €			Leader_Price 
+:14/03/2016:		:-80 €			:Leader_Price 
 
-25/04/2016		25 €			M.Coco 
+:25/04/2016:		:25 €			:M.Coco 
